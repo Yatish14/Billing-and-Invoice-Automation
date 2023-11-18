@@ -34,7 +34,6 @@ const UserDetails = () => {
       .then((data) => setData(data))
       .catch((error) => {
         console.error("Error fetching data:", error);
-        // You might want to update a state indicating an error occurred here
       });
   }, []);
   

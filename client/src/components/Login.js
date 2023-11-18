@@ -24,7 +24,7 @@ function Login() {
 
   useEffect(() => {
     window.google.accounts.id.initialize({
-      client_id: "628320380591-djkaq274nt0vgs72laa5krgjqr6nmbjt.apps.googleusercontent.com",
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback: handleCallback,
     });
     window.google.accounts.id.renderButton(
@@ -40,13 +40,6 @@ function Login() {
   return (
     <div className="Login">
       <div id="signindiv"></div>
-      {/* {Object.keys(User).length !== 0 && <button onClick={handleSignOut}>Sign Out</button>} */}
-      {/* {Object.keys(User).length !== 0 && (
-        <div>
-          <h1>{User.name}</h1>
-          <img src={User.picture}/>
-        </div>
-      )} */}
     </div>
   );
 }
