@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const genertaeHTML = require('./invoice.js');
+require("dotenv").config();
 const app = express();
 
 app.use(express.json())
@@ -13,7 +14,7 @@ app.post('/generate-invoice', async (req, res) => {
     if (!req.body) {
         return res.status(400).send('Invalid request data');
       }
-    axios.post('https://hooks.zapier.com/hooks/catch/17085603/3kh8mjc/',{email: req.body.email, subject: `Regarding Invoice Details for your ${req.body.invoiceData.plan} Plan`, body: html}, {
+    axios.post(process.env.ZAP_URL,{email: req.body.email, subject: `Regarding Invoice Details for your ${req.body.invoiceData.plan} Plan`, body: html}, {
         Accept: "application/json",
         "Content-Type": "application/json",
       })
